@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Task from "./Task/Task"
+
+import axios from "axios"
+import { Link } from "react-router-dom";
+
+import{useState,useEffect}from "react";
 
 function App() {
+
+  const[tasks,setTasks]=useState([])
+
+  useEffect(()=>{
+    axios.get('/tasks').then((response)=>{
+      setTasks(response.data.data)
+    })
+
+
+  },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Task App</h1>
+       <Link to="/add">Add Task</Link>
+      {
+        tasks.map((task)=>{
+          return(<Task id={task.id} title={task.title} 
+            description={task.description}
+            priority={task.priority}
+            emoji={task.emoji}/>)
+        })
+      }
+      
+
+      
+
     </div>
+
   );
 }
 

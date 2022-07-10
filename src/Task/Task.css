@@ -1,0 +1,22 @@
+.task-container{
+    border: 4px double  black;
+    width:300px;
+    margin:10px;
+    padding: 10px;
+    background-color:antiquewhite;
+    box-shadow: 4px 4px black;
+    
+}
+.task-container:hover{
+    box-shadow: 4px 4px black;
+
+
+}
+.button-container{
+    background-color: tomato;
+
+}
+
+.button1{
+    background-color: yellowgreen;
+}
